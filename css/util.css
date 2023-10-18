@@ -1,0 +1,145 @@
+@media screen and (max-width:576px) {
+    .s1-link{
+        font-size: 2.5vw;
+    }
+    button{
+        font-size: 2.5vw;
+    }
+
+    .section-9{
+        grid-auto-columns: calc(100% * 1/2 - 10px);
+        grid-template-areas: 'title title' 'subt subt' 'im1 im2' 'im3 im4';
+    }
+}
+
+@media screen and (max-width:1020px) {
+    .carousel-2{
+        grid-auto-columns: calc(100% * 1/2 - 10px);
+    }
+    
+    .carousel-3{
+        grid-auto-columns: calc(100% * 1/3 - 13px) ;
+    }
+
+    .carousel-4{
+        grid-auto-columns: calc(100% * 1/3 - 13px) ;
+    }
+
+    /* .s11-img-container{
+        grid-auto-columns: calc(100% * 1/2 - 6px)
+    } */
+
+    /* .s11-img{
+        width: 80%;
+    } */
+}
+
+@media screen and (max-width:436px) {
+    .carousel-2{
+        grid-auto-columns: calc(100% - 1px);
+    }
+
+    .carousel-3{
+        grid-auto-columns: calc(100% * 1/2 - 10px) ;
+    }
+
+    .carousel-4{
+        grid-auto-columns: calc(100% * 1/2 - 10px) ;
+    }
+
+    .container-s3{
+        flex-direction: column;
+    }
+
+    .s3-price{
+        font-size: 4vw;
+    }
+
+    .s3-img, .info-s3{
+        width: 100%;
+    }
+
+    .info-s3 h1, .add-rem, .wish, .add-cart, inout{
+        font-size: 3.5vw;
+        padding: 2px;
+    }
+}
+
+@media screen and (max-width:576px){
+    .sec-2-container{
+        padding: 0 20px;
+        width: 80vw;
+        gap:10%
+    }
+    .sec-2-container p{
+        white-space: nowrap;
+        font-size: 2.5vw;
+        padding: 2px 10px;
+    }
+
+    
+    .vid-title{
+        display: none;
+    }
+
+    .brand{
+        width: 20vw;
+    }
+
+    .foot ul li{
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width:700px){
+    header{
+        font-size: 2vw;
+    }
+
+    footer{
+        grid-auto-columns: calc(100%/2);
+        grid-template-areas: 'one two' 'three four' 'five six';
+    }
+}
+
+.hide{
+    display: none;
+}
+
+.fade{
+    opacity:0.5;
+}
+
+.no-decoration{
+    text-decoration: none;
+}
+
+.font-black{
+    color: black;
+}
+
+.font-white{
+    color:white;
+}
+
+.font-green{
+    color: rgb(81, 130, 81);
+}
+
+.bg-green{
+    background-color: rgb(81, 130, 81);
+}
+
+.dragging{
+    cursor:grab;
+    /* user-select: none; */
+}
+
+.text-shadow-w{
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.539);
+}
+
+.size-inc{
+    transform: scale(1.2);
+}
