@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,17 +14,47 @@
     <script defer src="js/script.js"></script>
     <title>AmrutamVatika Clone</title>
 </head>
+
 <body>
     <header class="font-green header">
         <div class="header-main">
             <div>📞 +91 ********</div>
-            <img class="brand" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/only_text_Amrutam_Logo_in_Green-09_5580cc82-5bb1-43d6-9ed8-f5d51c04d1f8.png?v=1658129548&width=200%201x" alt="brand">
+            <img class="brand"
+                src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/only_text_Amrutam_Logo_in_Green-09_5580cc82-5bb1-43d6-9ed8-f5d51c04d1f8.png?v=1658129548&width=200%201x"
+                alt="brand">
             <div class="header-icons">
-                <input type="text">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-regular fa-user"></i>
+
                 <i class="fa-regular fa-heart"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-regular fa-user" id="userIcon" onClick="showForm()"></i>
+                <div class="form-container" id="formContainer">
+                    <form>
+                        <label for="emailInput">Email:</label>
+                        <input type="text" id="emailInput" class="input-field">
+                        <br>
+                        <label for="passwordInput">Password:</label>
+                        <input type="password" id="passwordInput" class="input-field">
+                        <br>
+                        <!-- <button type="button" id="loginButton" class="form-button" onclick="login()">Login</button> -->
+                        <button type="button" id="registerButton" class="form-button"
+                            onclick="register()">Register</button>
+                    </form>
+                </div>
+                <div id="successPopup" class="custom-popup">
+                    <div class="popup-content">
+                        <span class="close" id="closePopup">&times;</span>
+                        <p>Registration successful!</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-cart-shopping "></i>
+                <div id="cartModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Your Cart</h2>
+                        <ul id="cartItemList"></ul>
+                    </div>
+                </div>
+                <span class="cart-length">0</span>
+
             </div>
         </div>
         <nav class="navbar">
@@ -45,7 +76,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#health">
                         Health<i class="fa-solid fa-angle-down"></i>
                     </a>
                     <ul>
@@ -53,7 +84,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#lifestyle">
                         Lifestyle<i class="fa-solid fa-angle-down"></i>
                     </a>
                     <ul>
@@ -61,7 +92,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#community">
                         Community<i class="fa-solid fa-angle-down"></i>
                     </a>
                     <ul>
@@ -69,32 +100,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
-                        Blog<i class="fa-solid fa-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="#about-us">
                         About Us<i class="fa-solid fa-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        All Products<i class="fa-solid fa-angle-down"></i>
-                    </a>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">
-                        Account<i class="fa-solid fa-angle-down"></i>
                     </a>
                     <ul>
                         <li></li>
@@ -107,17 +114,25 @@
         <section class="wrapper-1">
             <div class="carousel-1">
                 <div class="slide-1">
-                    <img alt="slide image" id="s1-im1" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Keyliv_capsules_banner.jpg?v=1673952224&width=2000">
+                    <img alt="slide image" id="s1-im1"
+                        src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Keyliv_capsules_banner.jpg?v=1673952224&width=2000">
                     <a class="s1-link s1-i1-l1" href="#">
                         <h2>Liver Health & Detox</h2>
-                        <button><div class="orderBt">Order Now <div><i class="fa-solid fa-arrow-right"></i></div></div></button>
+                        <button>
+                            <div class="orderBt">Order Now <div><i class="fa-solid fa-arrow-right"></i></div>
+                            </div>
+                        </button>
                     </a>
                 </div>
                 <div class="slide-1">
-                    <img alt="slide image 2" id="s1-im2" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/nari_sondarya_capsule_newsletter.jpg?v=1673952224&width=2000">
+                    <img alt="slide image 2" id="s1-im2"
+                        src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/nari_sondarya_capsule_newsletter.jpg?v=1673952224&width=2000">
                     <a class="s1-link s1-i1-l2" href="#">
                         <h2>PCOD, Period Cramps & Mood Swings</h2>
-                        <button><div class="orderBt">Order Now <div><i class="fa-solid fa-arrow-right"></i></div></div></button>
+                        <button>
+                            <div class="orderBt">Order Now <div><i class="fa-solid fa-arrow-right"></i></div>
+                            </div>
+                        </button>
                     </a>
                 </div>
             </div>
@@ -136,91 +151,104 @@
             <ul class="carousel-2">
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i1" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Kuntal-Care-Hair-Spa-Re-shot-1-scaled.jpg?v=1658568746&width=100%20100w">
+                        <img id="c2-i1" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Kuntal-Care-Hair-Spa-Re-shot-1-scaled.jpg?v=1658568746&width=100%20100w">
                         <div class="shark-logo">Loved by Sharks 🦈</div>
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
                     <div class="desc">
-                        <a href="#" class="no-decoration">Amrutam Kuntal Care Hair Spa | Do-It-Yourself Hair Treatment</a>
+                        <a href="#" class="no-decoration">Amrutam Kuntal Care Hair Spa | Do-It-Yourself Hair
+                            Treatment</a>
                         <div class="price fade">Rs. 649.00</div>
                     </div>
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i2" alt="carousel 2 image" src="//cdn.shopify.com/s/files/1/0645/9650/8925/products/DSC03631-3-1psd1-1_1eab3686-bd5e-45f4-9aae-bcf1b9517c5e.jpg?v=1655351629&width=100 100w">
+                        <img id="c2-i2" alt="carousel 2 image"
+                            src="//cdn.shopify.com/s/files/1/0645/9650/8925/products/DSC03631-3-1psd1-1_1eab3686-bd5e-45f4-9aae-bcf1b9517c5e.jpg?v=1655351629&width=100 100w">
                         <div class="shark-logo">Loved by Sharks 🦈</div>
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
                     <div class="desc">
-                        <a href="#" class="no-decoration">Amrutam Kuntal Care Herbal Shampoo | Healthy, Natural and Dynamic Hair</a>
+                        <a href="#" class="no-decoration">Amrutam Kuntal Care Herbal Shampoo | Healthy, Natural and
+                            Dynamic Hair</a>
                         <div class="price fade">Rs. 599.00</div>
                     </div>
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i3" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Bhringraj-Hair-Therapy-1-min_f2cc2d36-7f48-40db-b986-ab5c7309ec15.jpg?v=1655350902&width=100 100w">
+                        <img id="c2-i3" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Bhringraj-Hair-Therapy-1-min_f2cc2d36-7f48-40db-b986-ab5c7309ec15.jpg?v=1655350902&width=100 100w">
                         <div class="shark-logo">Loved by Sharks 🦈</div>
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
                     <div class="desc">
-                        <a href="#" class="no-decoration">Amrutam Bhringraj Hair Therapy | 2-in-1 Conditioner and Shampoo</a>
+                        <a href="#" class="no-decoration">Amrutam Bhringraj Hair Therapy | 2-in-1 Conditioner and
+                            Shampoo</a>
                         <div class="price fade">Rs. 749.00</div>
                     </div>
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i4" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Kuntal-Care-Hair-Oil-1-min-scaled_144326e8-b8fe-430b-b79c-f7771f0fc2c6.jpg?v=1655351552&width=100 100w">
+                        <img id="c2-i4" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Kuntal-Care-Hair-Oil-1-min-scaled_144326e8-b8fe-430b-b79c-f7771f0fc2c6.jpg?v=1655351552&width=100 100w">
                         <div class="shark-logo">Loved by Sharks 🦈</div>
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
                     <div class="desc">
-                        <a href="#" class="no-decoration">Amrutam Kuntal Care Hair Oil | For Hair Revitalizing and Strengthening</a>
+                        <a href="#" class="no-decoration">Amrutam Kuntal Care Hair Oil | For Hair Revitalizing and
+                            Strengthening</a>
                         <div class="price fade">Rs. 599.00</div>
                     </div>
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i5" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/BrowserPreview_tmp-3-scaled_6653b717-6e07-453b-8aab-488e63f4e779.gif?v=1655350575&width=100 100w">
+                        <img id="c2-i5" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/BrowserPreview_tmp-3-scaled_6653b717-6e07-453b-8aab-488e63f4e779.gif?v=1655350575&width=100 100w">
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
                     <div class="desc">
-                        <a href="#" class="no-decoration">Amrutam Kuntal Care | Do-it-yourself Hair Spa | Travel Pack</a>
+                        <a href="#" class="no-decoration">Amrutam Kuntal Care | Do-it-yourself Hair Spa | Travel
+                            Pack</a>
                         <div class="price fade">Rs. 112.00</div>
                     </div>
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i6" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/BrowserPreview_tmp_6f2d45f6-7d5e-4442-b26e-d313785aff73.jpg?v=1655351801&width=100 100w">
+                        <img id="c2-i6" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/BrowserPreview_tmp_6f2d45f6-7d5e-4442-b26e-d313785aff73.jpg?v=1655351801&width=100 100w">
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
                     <div class="desc">
-                        <a href="#" class="no-decoration">Amrutam Nari Sondarya Malt | Complete Care for Women's Health and Beauty</a>
+                        <a href="#" class="no-decoration">Amrutam Nari Sondarya Malt | Complete Care for Women's Health
+                            and Beauty</a>
                         <div class="price fade">Rs. 711.00</div>
                     </div>
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i7" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Onion-Oil-1--scaled_14e3fd1d-36ea-4ddd-9b52-71495537c2d0.jpg?v=1655351947&width=100 100w">
+                        <img id="c2-i7" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Onion-Oil-1--scaled_14e3fd1d-36ea-4ddd-9b52-71495537c2d0.jpg?v=1655351947&width=100 100w">
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
@@ -231,9 +259,10 @@
                 </li>
                 <li class="card">
                     <div class="card-img">
-                        <img id="c2-i8" alt="carousel 2 image" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Madhu-30ml-scaled_bcf6f0e9-421d-4863-a830-e6f66b831b54.jpg?v=1655351723&width=100 100w">
+                        <img id="c2-i8" alt="carousel 2 image"
+                            src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Madhu-30ml-scaled_bcf6f0e9-421d-4863-a830-e6f66b831b54.jpg?v=1655351723&width=100 100w">
                         <div class="card-btns">
-                            <i class="fa-solid fa-cart-shopping"></i>
+                            <i class="fa-solid fa-cart-shopping cart-icon"></i>
                             <i class="fa-regular fa-heart"></i>
                         </div>
                     </div>
@@ -241,7 +270,14 @@
                         <a href="#" class="no-decoration">Amrutam Madhu Panchamrut | Herbs Enriched Honey</a>
                         <div class="price fade">Rs. 65.00</div>
                     </div>
-                </li> 
+                </li>
+                <div id="cartModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>Item added to cart!</p>
+                    </div>
+                </div>
+
             </ul>
             <i id="l2" class="fa-solid fa-chevron-left c2-btn"></i>
             <i id="r2" class="fa-solid fa-chevron-right c2-btn"></i>
@@ -249,7 +285,8 @@
         <section class="section-3">
             <div class="container-s3">
                 <div class="s3-img card-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Aloe-Vera-Gel--scaled_55b82e41-212e-41df-8132-e1511e2856d2.jpg?v=1655350092&width=400" alt="amrutam aloe-vera">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/products/Aloe-Vera-Gel--scaled_55b82e41-212e-41df-8132-e1511e2856d2.jpg?v=1655350092&width=400"
+                        alt="amrutam aloe-vera">
                     <div class="shark-logo">Loved by Sharks 🦈</div>
                 </div>
                 <div class="info-s3">
@@ -258,16 +295,16 @@
                     <div class="add-wish">
                         <div class="add-rem">
                             <div class="remove-btn"><i class="fa-solid fa-minus"></i></div>
-                            <input type="number" min="1" class="qty">
+                            <input type="number" min="1" class="qty" id="quantity">
                             <div class="add-btn"><i class="fa-solid fa-plus"></i></div>
                         </div>
                         <div class="wish"><i class="fa-regular fa-heart"></i></div>
                     </div>
-                    <button class="add-cart">ADD TO CART</button>
+                    <button class="add-cart cart-icon">ADD TO CART</button>
                 </div>
             </div>
         </section>
-        <section class="section-4 sec-def">
+        <section class="section-4 sec-def" id="about-us">
             <h1>it is time to address the root cause,</h1>
             <h2>you have been too busy treating the symptoms, and this is where we come in,</h2>
         </section>
@@ -275,120 +312,150 @@
             <ul class="carousel-3 vid-carousel">
                 <li class="vid-card-1 vid-card">
                     <video class="vid" muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657791918-wjobaflc/watermarked/540/10000000_3169424163270133_4593080676021649237_n.mp4" type="video/mp4">
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657791918-wjobaflc/watermarked/540/10000000_3169424163270133_4593080676021649237_n.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Amrutam Papa</div>
                 </li>
                 <li class="vid-card-1 vid-card">
                     <video class="vid" muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792357-tslbpnjq/watermarked/540/10000000_728499468114984_8139120134619675875_n.mp4">
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792357-tslbpnjq/watermarked/540/10000000_728499468114984_8139120134619675875_n.mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Haldi at Amrutam Vatika</div>
                 </li>
                 <li class="vid-card-1 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792120-acznwigx/watermarked/540/10000000_1220842515067374_9156743976455283835_n.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792120-acznwigx/watermarked/540/10000000_1220842515067374_9156743976455283835_n.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Hibiscus at Amrutam Vatika</div>
                 </li>
                 <li class="vid-card-1 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657791396-pirfnaot/watermarked/540/10000000_468799037753186_3138776627433085089_n.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657791396-pirfnaot/watermarked/540/10000000_468799037753186_3138776627433085089_n.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Amrutam Vatika 🌿</div>
                 </li>
                 <li class="vid-card-1 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792613-fyrivnmq/watermarked/540/10000000_555824985962160_1494333877945714038_n.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792613-fyrivnmq/watermarked/540/10000000_555824985962160_1494333877945714038_n.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Filteration Process of Kuntal Care Hair Spa</div>
                 </li>
                 <li class="vid-card-1 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792235-dvylorzx/watermarked/540/10000000_852910542278526_6890479819261823263_n.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792235-dvylorzx/watermarked/540/10000000_852910542278526_6890479819261823263_n.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">White & Blue Shankhpushpi</div>
                 </li>
                 <li class="vid-card-1 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792454-iqhscmgv/watermarked/540/273223015_365795258306306_2205880520435611746_n.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/7/14/1657792454-iqhscmgv/watermarked/540/273223015_365795258306306_2205880520435611746_n.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Bhringraj at Amrutam Vatika</div>
                 </li>
             </ul>
-            
+
             <i id="l3" class="fa-solid fa-circle-chevron-left text-shadow-w c3-btn"></i>
             <i id="r3" class="fa-solid fa-circle-chevron-right text-shadow-w c3-btn"></i>
         </section>
-        <section class="section-6 sec-def">
+        <section class="section-6 sec-def" id="lifestyle">
             <div class="s6-container">
                 <h1>Poor lifestyle is a major health concern today</h1>
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/stats_copy.jpg?v=1657796038&width=900" alt="section 6 img" class="s6-i1">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/hair_stat_copy.jpg?v=1657796037&width=400" alt="section 6 img" class="s6-i2">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/mental_illness_stats_copy.jpg?v=1657796035&width=400" alt="section 6 img" class="s6-i3">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/skin_stats.jpg?v=1657796035&width=400" alt="section 6 img" class="s6-i4">    
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/stats_copy.jpg?v=1657796038&width=900"
+                    alt="section 6 img" class="s6-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/hair_stat_copy.jpg?v=1657796037&width=400"
+                    alt="section 6 img" class="s6-i2">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/mental_illness_stats_copy.jpg?v=1657796035&width=400"
+                    alt="section 6 img" class="s6-i3">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/skin_stats.jpg?v=1657796035&width=400"
+                    alt="section 6 img" class="s6-i4">
             </div>
         </section>
 
-        <section class="section-7 sec-def">
+        <section class="section-7 sec-def" id="health">
             <h1>Health is Beauty</h1>
             <h2>we offer both application-based and consumables for holistic healing inside out.</h2>
             <div class="s7-info-container">
                 <div class="s7-info">
                     <h3>30+ Years of Expertise</h3>
                     <p>
-                        Amrutam brings along decades-long experience and expertise in the Ayurveda Industry. Inspired by the Vedic Principles and being in sync with nature, our unique and authentic formulations are infused with raw herbs that address the root cause of the problem instead of just treating the symptoms.
+                        Amrutam brings along decades-long experience and expertise in the Ayurveda Industry. Inspired by
+                        the Vedic Principles and being in sync with nature, our unique and authentic formulations are
+                        infused with raw herbs that address the root cause of the problem instead of just treating the
+                        symptoms.
                     </p>
                     <p>
-                        We are cruelty-free, ethically-sourced and lovingly curated one-stop solution for your health and beauty needs. Certified by the Ministry of AYUSH, PETA and USFDA.
+                        We are cruelty-free, ethically-sourced and lovingly curated one-stop solution for your health
+                        and beauty needs. Certified by the Ministry of AYUSH, PETA and USFDA.
                     </p>
                 </div>
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/amrutam_features2.jpg?v=1657712116&width=400" alt="section 7 img" class="s7-img">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/amrutam_features2.jpg?v=1657712116&width=400"
+                    alt="section 7 img" class="s7-img">
             </div>
         </section>
 
         <section class="section-8 sec-def">
             <h3>Authentic Ayurvedic Formulations</h3>
-            <img alt="section 8 images" class="s8-img" src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Certifications.png?v=1657793077&width=400">
+            <img alt="section 8 images" class="s8-img"
+                src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Certifications.png?v=1657793077&width=400">
         </section>
 
         <section class="section-9 sec-def-0">
             <h1 class="s9-title">People Trust Us</h1>
             <h2 class="s9-subt">because we go one step ahead</h2>
             <div class="s9-card s9-c1">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Lifestyle_Kit_2.4.jpg?v=1658141319&width=900" alt="image" class="s9-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Lifestyle_Kit_2.4.jpg?v=1658141319&width=900"
+                    alt="image" class="s9-i1">
                 <button>🧠 Quizzes</button>
             </div>
             <div class="s9-card s9-c2">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Skinkey_Malt_1.jpg?v=1658128767&width=200" alt="image" class="s9-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Skinkey_Malt_1.jpg?v=1658128767&width=200"
+                    alt="image" class="s9-i1">
                 <button>📞 Doctors</button>
             </div>
             <div class="s9-card s9-c3">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Lifestyle_Kit_1.3.jpg?v=1658141838&width=400" alt="image" class="s9-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Lifestyle_Kit_1.3.jpg?v=1658141838&width=400"
+                    alt="image" class="s9-i1">
                 <button>📖 Ebooks</button>
             </div>
             <div class="s9-card s9-c4">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Dentkey_Manjan_2.jpg?v=1658129215&width=900" alt="image" class="s9-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Dentkey_Manjan_2.jpg?v=1658129215&width=900"
+                    alt="image" class="s9-i1">
                 <button>📝 Articles</button>
             </div>
         </section>
         <section class="section-10 sec-def-0">
             <h1>Achievements & More</h1>
             <div class="s10-c1">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/1663993437786.jpg?v=1664784731&width=400" alt="Image" class="s10-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/1663993437786.jpg?v=1664784731&width=400"
+                    alt="Image" class="s10-i1">
             </div>
             <div class="s10-c2">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/WhatsApp_Image_2022-10-03_at_1.23.19_PM.jpg?v=1664784954&width=700" alt="Image" class="s10-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/WhatsApp_Image_2022-10-03_at_1.23.19_PM.jpg?v=1664784954&width=700"
+                    alt="Image" class="s10-i1">
             </div>
             <div class="s10-c3">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/1653842881366.jpg?v=1664785208&width=400" alt="Image" class="s10-i1">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/1653842881366.jpg?v=1664785208&width=400"
+                    alt="Image" class="s10-i1">
             </div>
             <h2 class="s10-info1">Top 500 D2C Challenger Brands of India by YourStory Media</h2>
             <h2 class="s10-info2">Top 100 D2C Brand 2022 by Indian Retailer</h2>
@@ -398,17 +465,28 @@
             <h1>As Featured In</h1>
             <div class="s11-wrapper">
                 <div class="s11-img-container">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Lifestyle-Asia.png?v=1657782716&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/logo_cnt.png?v=1657782716&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/huffpost_logo.png?v=1657782716&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/voice_of_fashion_logo.png?v=1657784231&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Times-of-India.png?v=1657782716&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/vogue_sqr-02.png?v=1657783951&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/forbes-30-under-30-asia-honoree-badge-2022_Proxy.png?v=1657783503&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/yourstory_logo.png?v=1657782716&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/logo_living-Etc.jpg?v=1657782716&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/gq_logo-03.png?v=1657784148&width=200" alt="image" class="s11-img">
-                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/deccan_herald_logo.jpg?v=1657782716&width=200" alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Lifestyle-Asia.png?v=1657782716&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/logo_cnt.png?v=1657782716&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/huffpost_logo.png?v=1657782716&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/voice_of_fashion_logo.png?v=1657784231&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/Times-of-India.png?v=1657782716&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/vogue_sqr-02.png?v=1657783951&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/forbes-30-under-30-asia-honoree-badge-2022_Proxy.png?v=1657783503&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/yourstory_logo.png?v=1657782716&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/logo_living-Etc.jpg?v=1657782716&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/gq_logo-03.png?v=1657784148&width=200"
+                        alt="image" class="s11-img">
+                    <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/deccan_herald_logo.jpg?v=1657782716&width=200"
+                        alt="image" class="s11-img">
                 </div>
             </div>
         </section>
@@ -416,82 +494,107 @@
             <ul class="carousel-4 vid-carousel">
                 <li class="vid-card-2 vid-card">
                     <video class="vid" muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673770-ianjfcud/watermarked/540/mzchfvga_out.mp4" type="video/mp4">
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673770-ianjfcud/watermarked/540/mzchfvga_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Face Clean Up 💖</div>
                 </li>
                 <li class="vid-card-2 vid-card">
                     <video class="vid" muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2021/8/23/1629725074-cvhmdera/watermarked/540/qfesgaty_out.mp4" type="video/mp4">
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2021/8/23/1629725074-cvhmdera/watermarked/540/qfesgaty_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Nari Sondarya Malt for women</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2021/8/26/1629968847-nvdreitu/watermarked/540/xzrkvtdw_out.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2021/8/26/1629968847-nvdreitu/watermarked/540/xzrkvtdw_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Amrutam Kumkumadi Oil ft. Naina</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673786-lqrzdgmb/watermarked/540/fawliztn_out.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673786-lqrzdgmb/watermarked/540/fawliztn_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Bhringraj Hair Therapy ✨</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2021/9/22/1632314716-zjmfntgs/watermarked/540/brhlsfvu_out.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2021/9/22/1632314716-zjmfntgs/watermarked/540/brhlsfvu_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Kuntal Care Hair Oil ft. Aanam</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2021/10/25/1635160907-dqkbrmgn/watermarked/540/RitikaAmruIGTVKCMALTAD.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2021/10/25/1635160907-dqkbrmgn/watermarked/540/RitikaAmruIGTVKCMALTAD.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Ritika Amrutam Kuntal Care Malt</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2021/11/24/1637735265-maloikuc/watermarked/540/final_verticalspa.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2021/11/24/1637735265-maloikuc/watermarked/540/final_verticalspa.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Kuntal care hair spa</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673826-ckxjnysd/watermarked/540/rnqmoiyz_out.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673826-ckxjnysd/watermarked/540/rnqmoiyz_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Ayurveda’s Elixir Formula For Healthy Life⭐️</div>
                 </li>
                 <li class="vid-card-2 vid-card">
-                    <video class="vid"  muted loop>
-                        <source src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673292-eyiubwqk/watermarked/540/ncjdvtma_out.mp4" type="video/mp4">
+                    <video class="vid" muted loop>
+                        <source
+                            src="https://cdn4.fireworktv.com/medias/2022/1/20/1642673292-eyiubwqk/watermarked/540/ncjdvtma_out.mp4"
+                            type="video/mp4">
                     </video>
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <div class="vid-title">Give yourself a spa experience at home💗</div>
                 </li>
             </ul>
-            
+
             <i id="l4" class="fa-solid fa-circle-chevron-left text-shadow-w c4-btn"></i>
             <i id="r4" class="fa-solid fa-circle-chevron-right text-shadow-w c4-btn"></i>
         </section>
-        <section class="section-13 sec-def">
+        <section class="section-13 sec-def" id="community">
             <h1>Betting Big On Community</h1>
-            <h2>Gwalior, where Amrutam originated, a city at the heart of India, has a rich history of music. We featured 7 musicians from Gwalior Gharana to empower and uplift the beauty of our cultural and architectural heritage.</h2>
+            <h2>Gwalior, where Amrutam originated, a city at the heart of India, has a rich history of music. We
+                featured 7 musicians from Gwalior Gharana to empower and uplift the beauty of our cultural and
+                architectural heritage.</h2>
             <div class="yt-embed">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/yHqsa1HjRCk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/yHqsa1HjRCk"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
             </div>
         </section>
         <section class="section-14">
-            <h1>Listen to our podcast - Rediscovering Self with Amrutam, where we understand our body and mind through a holistic lens.</h1>
-            <div class="play-link">Play now <div class="play-icon"><i class="fa-solid fa-square-caret-right"></i></div></div>
+            <h1>Listen to our podcast - Rediscovering Self with Amrutam, where we understand our body and mind through a
+                holistic lens.</h1>
+            <div class="play-link">Play now <div class="play-icon"><i class="fa-solid fa-square-caret-right"></i></div>
+            </div>
         </section>
     </article>
     <footer>
@@ -560,10 +663,13 @@
         <div class="footer-6 foot">
             <h1>Download Amrutam Home App</h1>
             <div class="f1-content">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/google-play-badge.png?v=1676873119&width=400" alt="google play">
-                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/app-store-badge.png?v=1676873119&width=400" alt="Apple store">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/google-play-badge.png?v=1676873119&width=400"
+                    alt="google play">
+                <img src="https://cdn.shopify.com/s/files/1/0645/9650/8925/files/app-store-badge.png?v=1676873119&width=400"
+                    alt="Apple store">
             </div>
         </div>
     </footer>
 </body>
+
 </html>
